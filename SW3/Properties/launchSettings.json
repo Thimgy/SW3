@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SW3": {
+      "commandName": "Project",
+      "workingDirectory": ".."
+    }
+  }
+}
