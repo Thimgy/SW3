@@ -5,28 +5,31 @@ namespace SW3
 {
     class Program
     {
-        static void Main(string[] args_)
+        static void Main(string[] args)
         {
-            string[] args = {"in.txt", "out.txt"};
-            // basic parsing
+            // exit if not enough arguments are provided
             if(args.Length != 2)
             {
-                Console.Error.WriteLine($"Execpected 2 argument, only received {args.Length}");
+                Console.Error.WriteLine($"Expected 2 arguments, got {args.Length}");
                 Environment.Exit(1);
             }
 
             string inputFile = args[0];
             string outputFile = args[1];
 
-            Input input = new Input();
-            List<string> words = input.ReadWords(inputFile);
+            Input input = new Input(inputFile);
+            List<List<string>> lines = input.GetLinesSplittedByWords();
 
-            // do stuff with words
-            List<string> sortedLines = /*...*/words;
+            CircluarShift cs = new CircluarShift();
+            List<string> shifts = cs.GetListShifts(lines);
 
+            AlphabeticalSort alphSort = new AlphabeticalSort();
+            List<string> sortedShifts = alphSort.SortLines(shifts);
 
-            Output output = new Output();
-            output.WriteLines(outputFile, sortedLines);
+            using (Output output = new Output(outputFile))
+            {
+                output.WriteLines(sortedShifts);
+            }
         }
     }
 }

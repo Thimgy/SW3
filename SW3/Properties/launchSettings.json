@@ -2,6 +2,7 @@
   "profiles": {
     "SW3": {
       "commandName": "Project",
+      "commandLineArgs": "in.txt out.txt",
       "workingDirectory": ".."
     }
   }
