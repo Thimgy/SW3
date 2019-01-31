@@ -1,3 +1,6 @@
-X
-in
-Y
+A C B
+Aleksandar Marko Janko
+B A C
+C B A
+Janko Aleksandar Marko
+Marko Janko Aleksandar

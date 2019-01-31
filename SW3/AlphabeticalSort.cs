@@ -7,7 +7,8 @@ namespace SW3
     {
         public List<string> SortLines(List<string> lines)
         {
-            throw new NotImplementedException();
+            lines.Sort();
+            return lines;
         }
     }
 }
