@@ -12,9 +12,9 @@ namespace SW3
             this.shifted = new List<string>();
         }
 
-        public List<string> GetListShifts(List<List<string>> wordList)
+        public List<string> GetListShifts(Content lines)
         {
-            foreach (List<String> list in wordList)
+            foreach (List<String> list in lines.IterLines())
             {
                 for (int i = 0; i<list.Count; i++)
                 {

@@ -31,6 +31,11 @@ namespace SW3
             return this.content;
         }
 
+        public Content GetContent()
+        {
+            return new Content(this.content);
+        }
+
         public List<List<string>> GetLinesSplittedByWords()
         {
             List<List<string>> result = new List<List<string>>();

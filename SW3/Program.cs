@@ -20,9 +20,10 @@ namespace SW3
 
             Input input = new Input(inputFile);
             List<List<string>> lines = input.GetLinesSplittedByWords();
+            Content content = input.GetContent();
 
             CircluarShift cs = new CircluarShift();
-            List<string> shifts = cs.GetListShifts(lines);
+            List<string> shifts = cs.GetListShifts(content);
 
             AlphabeticalSort sorter = new AlphabeticalSort();
             List<string> sortedShifts = sorter.SortLines(shifts);
