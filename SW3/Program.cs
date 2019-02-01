@@ -10,8 +10,9 @@ namespace SW3
             // exit if not enough arguments are provided
             if(args.Length != 2)
             {
-                Console.Error.WriteLine($"Expected 2 arguments, got {args.Length}");
-                Environment.Exit(1);
+                Console.Error.WriteLine($"{AppDomain.CurrentDomain.FriendlyName} expect 2 arguments but {args.Length} were provided");
+                Environment.ExitCode = 1;
+                return;
             }
 
             string inputFile = args[0];
@@ -23,8 +24,8 @@ namespace SW3
             CircluarShift cs = new CircluarShift();
             List<string> shifts = cs.GetListShifts(lines);
 
-            AlphabeticalSort alphSort = new AlphabeticalSort();
-            List<string> sortedShifts = alphSort.SortLines(shifts);
+            AlphabeticalSort sorter = new AlphabeticalSort();
+            List<string> sortedShifts = sorter.SortLines(shifts);
 
             using (Output output = new Output(outputFile))
             {
