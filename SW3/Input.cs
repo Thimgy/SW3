@@ -8,39 +8,27 @@ namespace SW3
 {
     public class Input
     {
-        private List<string> content;
+        // immutable representation of the content of the file
+        // build in the constructor
+        private IList<string> content;
 
-        // todo doc & might throws
         public Input(string path)
         {
-            this.content = new List<string>();
+            List<string> temp = new List<string>();
             using (StreamReader sr = new StreamReader(path))
             {
                 string line;
-                while((line = sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()) != null)
                 {
-                    this.content.Add(line);
+                    temp.Add(line);
                 }
             }
+            this.content = temp.AsReadOnly();
         }
-
-        // forward the number of item of the private list
-        public int GetLineCount()
+        
+        public IList<string> GetLines()
         {
-            return this.content.Count;
-        }
-
-        // TODO doc
-        public string GetLine(int nbLine)
-        {
-            return this.content[nbLine];
-        }
-
-        // TODO doc
-        public List<string> GetWords(int nbLine)
-        {
-            string line = this.GetLine(nbLine);
-            return new List<string>(line.Split(' '));
+            return this.content;
         }
 
         public List<List<string>> GetLinesSplittedByWords()
