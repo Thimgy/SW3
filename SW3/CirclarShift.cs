@@ -18,21 +18,22 @@ namespace SW3
             {
                 for (int i = 0; i<list.Count; i++)
                 {
-                    shifted.Add(GenerateLine(list));
+                    shifted.Add(String.Join(' ', list));
+                    //shifted.Add(GenerateLine(list));
                     Shift(list);
                 }
             }
             return shifted;
         }
 
-        public String GenerateLine(List<String> arg) {
+        /*public String GenerateLine(List<String> arg) {
             String temp = "";
             foreach (String s in arg) {
                 temp += s + " ";
             }
             temp = temp.Substring(0, temp.Length - 1);
             return temp;
-        }
+        }*/
 
         public void Shift(List<String> arg)
         {
