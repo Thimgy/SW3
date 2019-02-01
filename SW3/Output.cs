@@ -5,18 +5,11 @@ using System.IO;
 
 namespace SW3
 {
-    // IDisposable => allow to write:
-    //  using (Output out = new Output(path))
-    //  {
-    //    /*do stuff*/
-    //  }
-    //  // close everything
-    // might be a bit too fancy, through
     public class Output : IDisposable
     {
         private StreamWriter writer;
-
-        // todo doc & might throws
+        private bool fstLine = true;
+        
         public Output(string path)
         {
             this.writer = new StreamWriter(path);
@@ -26,13 +19,19 @@ namespace SW3
         {
             this.writer.Dispose();
         }
-
-        // todo doc
+        
         public void WriteLines(List<string> lines)
         {
-            foreach (var line in lines)
+            int i = 0;
+            if (this.fstLine)
             {
-                this.writer.WriteLine(line);
+                this.fstLine = false;
+                this.writer.Write(lines[0]);
+                i = 1;
+            }
+            for (; i<lines.Count; ++i)
+            {
+                this.writer.Write(Environment.NewLine + lines[i]);
             }
         }
     }
