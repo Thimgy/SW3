@@ -10,7 +10,7 @@ namespace SW3
         private StreamWriter writer;
         private bool fstLine = true;
         
-        public Output(string path)
+        public Output(String path)
         {
             this.writer = new StreamWriter(path);
         }
@@ -20,7 +20,7 @@ namespace SW3
             this.writer.Close();
         }
         
-        public void WriteLines(List<string> lines)
+        public void WriteLines(List<String> lines)
         {
             if(lines.Count == 0)
             {

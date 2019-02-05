@@ -8,16 +8,14 @@ namespace SW3
 {
     public class Input
     {
-        // immutable representation of the content of the file
-        // build in the constructor
-        private IList<string> content;
+        private IList<String> content;
 
-        public Input(string path)
+        public Input(String path)
         {
-            List<string> temp = new List<string>();
+            List<String> temp = new List<String>();
             using (StreamReader sr = new StreamReader(path))
             {
-                string line;
+                String line;
                 while ((line = sr.ReadLine()) != null)
                 {
                     temp.Add(line);
@@ -26,17 +24,17 @@ namespace SW3
             this.content = temp.AsReadOnly();
         }
         
-        public IList<string> GetLines()
+        public IList<String> GetLines()
         {
             return this.content;
         }
 
-        public List<List<string>> GetLinesSplittedByWords()
+        public List<List<String>> GetLinesSplittedByWords()
         {
-            List<List<string>> result = new List<List<string>>();
-            foreach(string line in this.content)
+            List<List<String>> result = new List<List<String>>();
+            foreach(String line in this.content)
             {
-                List<string> words = new List<string>(line.Split(' '));
+                List<String> words = new List<String>(line.Split(' '));
                 result.Add(words);
             }
             return result;

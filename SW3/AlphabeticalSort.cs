@@ -5,7 +5,7 @@ namespace SW3
 {
     public class AlphabeticalSort
     {
-        public List<string> SortLines(List<string> lines)
+        public List<String> SortLines(List<String> lines)
         {
             lines.Sort();
             return lines;
