@@ -26,15 +26,16 @@ namespace SW3
             {
                 return;
             }
-
-            int i = 0;
+            
             if (this.fstLine)
             {
                 this.fstLine = false;
-                this.writer.Write(lines[0]);
-                i = 1;
             }
-            for (; i<lines.Count-1; ++i)
+            else
+            {
+                this.writer.WriteLine();
+            }
+            for (int i=0; i<lines.Count-1; ++i)
             {
                 this.writer.WriteLine(lines[i]);
             }
