@@ -5,7 +5,7 @@ namespace SW3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(String[] args)
         {
             // exit if not enough arguments are provided
             if(args.Length != 2)
@@ -15,22 +15,21 @@ namespace SW3
                 return;
             }
 
-            string inputFile = args[0];
-            string outputFile = args[1];
+            String inputFile = args[0];
+            String outputFile = args[1];
 
             Input input = new Input(inputFile);
-            List<List<string>> lines = input.GetLinesSplittedByWords();
+            List<List<String>> lines = input.GetLinesSplittedByWords();
 
-            CircluarShift cs = new CircluarShift();
-            List<string> shifts = cs.GetListShifts(lines);
+            CircluarShift cs = new CircluarShift(lines);
+            List<String> shifts = cs.GetListShifts();
 
             AlphabeticalSort sorter = new AlphabeticalSort();
-            List<string> sortedShifts = sorter.SortLines(shifts);
+            List<String> sortedShifts = sorter.SortLines(shifts);
 
-            using (Output output = new Output(outputFile))
-            {
-                output.WriteLines(sortedShifts);
-            }
+            Output output = new Output(outputFile);
+            output.WriteLines(sortedShifts);
+            output.Close();
         }
     }
 }
