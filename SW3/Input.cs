@@ -8,7 +8,7 @@ namespace SW3
 {
     public class Input
     {
-        private IList<String> content;
+        private List<String> content;
 
         public Input(String path)
         {
@@ -21,23 +21,16 @@ namespace SW3
                     temp.Add(line);
                 }
             }
-            this.content = temp.AsReadOnly();
+            this.content = temp;
         }
         
-        public IList<String> GetLines()
+        public List<String> GetLines()
         {
             return this.content;
         }
 
-        public List<List<String>> GetLinesSplittedByWords()
-        {
-            List<List<String>> result = new List<List<String>>();
-            foreach(String line in this.content)
-            {
-                List<String> words = new List<String>(line.Split(' '));
-                result.Add(words);
-            }
-            return result;
-        }
+        //Seperate class for bellow method
+
+       
     }
 }

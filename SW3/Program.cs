@@ -19,9 +19,10 @@ namespace SW3
             String outputFile = args[1];
 
             Input input = new Input(inputFile);
-            List<List<String>> lines = input.GetLinesSplittedByWords();
-
-            CircluarShift cs = new CircluarShift(lines);
+            List<String> list = input.GetLines();
+            StoringLines sl = new StoringLines(list);
+            
+            CircluarShift cs = new CircluarShift(sl.GetList());
             List<String> shifts = cs.GetListShifts();
 
             AlphabeticalSort sorter = new AlphabeticalSort();
